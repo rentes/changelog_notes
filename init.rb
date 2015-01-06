@@ -5,4 +5,5 @@ Redmine::Plugin.register :changelog_notes do
   version '0.0.1'
   url 'https://github.com/rentes/changelog_notes'
   author_url 'http://about.me/rentes'
+  menu :application_menu, :changelog_notes, { :controller => 'changelog_notes', :action => 'index'}, :caption => 'Changelog Notes'
 end
