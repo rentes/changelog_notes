@@ -4,9 +4,8 @@
 
 function redirectVersion() {
     var url = document.URL.split("?");
-    var selected_resource_id = document.getElementById('version_id').value;
-    var query = window.location.search.substring(1);
-    var parameters = query.split("&");
-    var params = parameters[0] + '&id=' + selected_resource_id;
+    var selected_version = document.getElementById('version_id').value;
+    var parameters = window.location.search.substring(1).split("&");
+    var params = parameters[0] + '&id=' + selected_version;
     window.location = url[0] + '?' + params;
 }
