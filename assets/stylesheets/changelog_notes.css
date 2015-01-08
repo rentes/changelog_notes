@@ -17,3 +17,26 @@ a:hover {
 a:active {
     color: #979797;
 }
+
+/* table headers and data */
+table.product_version {
+    padding: 1px;
+    text-align: left;
+    width: 50%;
+    white-space: nowrap;
+}
+
+table.product_version td.product {
+    text-align: left;
+    width: 20%;
+}
+
+table.product_version input#product {
+    border: 0px;
+}
+
+table.product_version td.version {
+    font-size: 100%;
+    text-align: left;
+    width: 20%;
+}

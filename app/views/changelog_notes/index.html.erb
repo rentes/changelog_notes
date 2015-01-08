@@ -9,6 +9,5 @@
     <td class="version">Version:
       <%= select_tag(:version_id, options_for_select(@natural_sorted_versions, params[:id]), :include_blank => true, :onchange => 'redirectVersion()') %>
     </td>
-    <td class="version_activation_date"></td>
   </tr>
 </table>
