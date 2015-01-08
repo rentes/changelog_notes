@@ -1,4 +1,14 @@
 <%= stylesheet_link_tag 'changelog_notes.css', :plugin => 'changelog_notes', :media => 'all' %>
+<%= javascript_include_tag 'changelog_notes.js', :plugin => 'changelog_notes' %>
 <h2>Changelog Notes</h2>
 <br>
 <h3>Project and Version</h3>
+<table class="product_version">
+  <tr>
+    <td class="product">Product: <%= text_field_tag 'product', @project, readonly: 'readonly' %></td>
+    <td class="version">Version:
+      <%= select_tag(:version_id, options_for_select(@natural_sorted_versions, params[:id]), :include_blank => true, :onchange => 'redirectVersion()') %>
+    </td>
+    <td class="version_activation_date"></td>
+  </tr>
+</table>
