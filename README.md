@@ -14,7 +14,7 @@ Please read the official documentation on how to install [Redmine plugins](http:
 TL;DR:
 
 - unzip the plugin sources into redmine/plugins directory;
-- run rake redmine:plugins:migrate (this step will insert a custom field "Changelog Note" on the redmine custom_fields table);
+- run rake redmine:plugins:migrate RAILS_ENV=production (this step will insert a custom field "Changelog Note" on the redmine custom_fields table);
 - enable the Changelog Notes module on your project of choose settings page;
 - a new link "Changelog Notes" will be available after the "Activity" link on your project application menu.
 
