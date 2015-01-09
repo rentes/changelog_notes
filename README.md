@@ -6,8 +6,8 @@ Redmine plugin for gathering your personal notes on issues from a particular pro
 Redmine is a flexible project management web application. Written in Ruby on Rails framework, it is a cross-platform and cross-database.
 You can learn more about Redmine at http://redmine.org
 
-Installation
-============
+Installing
+==========
 
 Please read the official documentation on how to install [Redmine plugins](http://www.redmine.org/projects/redmine/wiki/Plugins "Redmine plugins").
 
@@ -18,6 +18,11 @@ TL;DR:
 - enable the Changelog Notes module on your project of choose settings page;
 - a new link "Changelog Notes" will be available after the "Activity" link on your project application menu.
 
+Uninstalling
+============
+
+- run rake redmine:plugins:migrate NAME=changelog_notes VERSION=0 RAILS_ENV=production;
+- remove the directory redmine/plugins/changelog_notes.
 
 Inspiration
 ===========
