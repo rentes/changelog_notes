@@ -11,3 +11,7 @@
 
 ## Specific to RubyMine
 /.idea
+
+## Environment normalisation
+/.bundle
+Gemfile.lock
