@@ -11,7 +11,6 @@ module ChangelogNotesControllerHelper
       @sorted_versions.push(version.name.to_s)
     end
     @natural_sorted_versions = Naturalsorter::Sorter.sort_version(@sorted_versions, false)
-    # the chosen version from the combo-box
     @version_selected_combo = params[:id].to_s
   end
 end
