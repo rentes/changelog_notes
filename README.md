@@ -15,7 +15,8 @@ TL;DR:
 
 - unzip the plugin sources into redmine/plugins directory;
 - run rake redmine:plugins:migrate RAILS_ENV=production (this step will insert a custom field "Changelog Note" on the redmine custom_fields table);
-- enable the Changelog Notes module and custom field on your project of choice under its settings page;
+- enable the Changelog Notes module and custom field on your project of choice under its settings page:
+  - check the Overview and Modules tabs.
 - check the projects where Changelog Notes custom field is being used on the administration custom fields page;
 - a new link "Changelog Notes" will be available after the "Activity" link on your project application menu.
 
