@@ -9,5 +9,5 @@ Redmine::Plugin.register :changelog_notes do
     permission :view_changelog_notes, :changelog_notes => :index
     permission :save_changelog_notes, :changelog_notes => :save
   end
-  menu :project_menu, :changelog_notes, { :controller => 'changelog_notes', :action => 'index'}, :caption => 'Changelog Notes', :after => :activity, :param => :project_id
+  menu :project_menu, :changelog_notes, {:controller => 'changelog_notes', :action => 'index'}, :caption => 'Changelog Notes', :after => :activity, :param => :project_id
 end

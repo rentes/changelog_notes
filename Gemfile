@@ -1,2 +1,6 @@
 source 'https://rubygems.org'
 gem 'naturalsorter'
+gem 'minitest'
+gem 'minitest-reporters'
+gem 'autorun'
+gem 'test-unit'

@@ -11,3 +11,48 @@
     </td>
   </tr>
 </table>
+<% if @issues.length > 0 %>
+<h3>Changelog</h3>
+<br>
+<table class="changelog">
+  <col width="3%" />
+  <col width="10%" />
+  <col width="8%" />
+  <col width="9%" />
+  <col width="70%" />
+  <tr>
+    <th class="checkbox">
+      <%= check_box('check_uncheck_all', 'value',
+                    {:onclick => 'check_uncheck_all(this);',
+                     :title => 'Include/exclude all the changelog notes'},
+                    'yes', 'no') %>
+    </th>
+    <th class="tracker">Tracker</th>
+    <th class="issue">Issue ID</th>
+    <th class="status">Status</th>
+    <th class="description">Changelog Note Description</th>
+  </tr>
+  <% @issues.each_with_index do |issue, index| %>
+      <tr>
+        <td class="checkbox">
+          <%= check_box('issues_check_box', issue.to_s.split(' ').at(1)[1..-2],
+                        {:checked => @issues_have_changelog_notes[index],
+                         :title => 'Include/exclude the changelog note from the issue'}, '1', '0') %>
+        </td>
+        <td class="tracker"><%= issue.to_s.split(' ').at(0) %></td>
+        <td class="issue">
+          <a href="<%= 'issues/' + issue.to_s.split(' ').at(1)[1..-2] %>" onclick="return !window.open(this.href());">
+          <%= text_field_tag('issue_id[]', issue.to_s.split(' ').at(1)[1..-2], type: 'url', readonly: 'readonly') %>
+          </a>
+        </td>
+        <td class="status"><%= @issues_status[index]  %></td>
+        <td class="description"><%= text_area 'issues_changelog_notes_descriptions',
+                                              issue.to_s.split(' ').at(1)[1..-2],
+                                              {:value => @issues_changelog_notes_descriptions[index],
+                                               :required => 'required',
+                                               :title => @issues_changelog_notes_descriptions[index]} %>
+        </td>
+      </tr>
+  <% end %>
+</table>
+<% end %>
