@@ -1,7 +1,8 @@
 # The Changelog Notes Controller
 class ChangelogNotesController < ApplicationController
   unloadable
-  include ChangelogNotesControllerHelper
+  include ChangelogNotesControllerIssueHelper
+  include ChangelogNotesControllerPDFHelper
 
   def index
     version_from_combobox

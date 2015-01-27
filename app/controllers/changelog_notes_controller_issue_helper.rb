@@ -1,5 +1,5 @@
-# The Changelog Notes Controller Helper
-module ChangelogNotesControllerHelper
+# The Changelog Notes Controller Issue Helper
+module ChangelogNotesControllerIssueHelper
   # returns the Redmine project ID
   def project_id
     project_id_sql = "identifier = \"" + params[:project_id].to_s + "\""
