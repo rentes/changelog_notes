@@ -11,6 +11,7 @@
     </td>
   </tr>
 </table>
+<%= form_tag("/redmine/changelog_notes?project_id=#{params[:project_id]}&id=#{@version_selected_combo}", method: :post, remote: true) do %>
 <% if @issues.length > 0 %>
 <h3>Changelog</h3>
 <br>
@@ -53,6 +54,20 @@
                                                :title => @issues_changelog_notes_descriptions[index]} %>
         </td>
       </tr>
-  <% end %>
+      <tr><td colspan="5"></td></tr>
+      <tr>
+        <td class="save_changes"><%= submit_tag('Save changes', :title => 'Saves all changes made on the changelog notes') %></td>
+        <td colspan="4"></td>
+      </tr>
 </table>
+<br>
+<table class="generate_changelog_notes">
+  <td class="generate_changelog_notes">
+    <%= submit_tag(nil, name: 'pdf', class: 'changelog_notes', value: 'Generate Changelog PDF', title: 'Generate Changelog PDF') %>
+  </td>
+</table>
+<% end %>
+<% else %>
+<b><i>No issues exist for the selected version.</i></b>
+<% end %>
 <% end %>

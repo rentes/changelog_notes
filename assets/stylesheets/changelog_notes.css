@@ -101,3 +101,19 @@ table.changelog textarea[name^="issues_changelog_notes_descriptions"] {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+table.changelog td.save_changes {
+    text-align: center;
+    padding-right: 10px;
+}
+
+table.generate_changelog_notes {
+    width: 100%;
+    white-space: nowrap;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+table.generate_changelog_notes td.generate_changelog_notes {
+    text-align: left;
+}
