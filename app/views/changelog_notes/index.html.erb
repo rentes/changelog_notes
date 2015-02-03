@@ -2,7 +2,7 @@
 <%= javascript_include_tag 'changelog_notes.js', :plugin => 'changelog_notes' %>
 <h2>Changelog Notes</h2>
 <br>
-<h3>Project and Version</h3>
+<h3>Product and Version</h3>
 <table class="product_version">
   <tr>
     <td class="product">Product: <%= text_field_tag 'product', @project, readonly: 'readonly' %></td>
@@ -13,6 +13,7 @@
 </table>
 <%= form_tag("/redmine/changelog_notes?project_id=#{params[:project_id]}&id=#{@version_selected_combo}", method: :post, remote: true) do %>
 <% if @issues.length > 0 %>
+<br>
 <h3>Changelog</h3>
 <br>
 <table class="changelog">
@@ -23,17 +24,13 @@
   <col width="70%" />
   <thead>
   <tr>
-    <th class="checkbox">
+    <th class="changelog_header">
       <%= check_box('check_uncheck_all', 'value', {:onclick => 'check_uncheck_all(this);', :title => 'Include/exclude all the changelog notes'}, 'yes', 'no') %>
     </th>
-    <th title="Sort by Tracker" class="tracker">
-      <a href="/redmine/public/changelog_notes?project_id=<%=params[:project_id]%>&id=<%=@version_selected_combo%>&sort=tracker%2Cid%3Adesc">Tracker</a>
-    </th>
-    <th title="Sort by Issue ID" class="issue">
-      <a href="/redmine/public/changelog_notes?project_id=<%=params[:project_id]%>&id=<%=@version_selected_combo%>&sort=id" class="sort desc">Issue ID</a>
-    </th>
-    <th title="Status" class="status">Status</th>
-    <th title="Changelog Description" class="description">Changelog Note Description</th>
+    <th title="Sort by Tracker" class="changelog_header">Tracker</th>
+    <th title="Sort by Issue ID" class="changelog_header">Issue ID</th>
+    <th title="Status" class="changelog_header">Status</th>
+    <th title="Changelog Description" class="changelog_header">Changelog Note Description</th>
   </tr>
   </thead>
     <% @issues.each_with_index do |issue, index| %>
@@ -63,6 +60,7 @@
   <tr>
     <td class="save_changes"><%= submit_tag('Save changes', :title => 'Saves all changes made on the changelog notes') %></td>
     <td class="save_pdf"><%= submit_tag(nil, name: 'pdf', class: 'changelog_notes', value: 'Save to PDF', title: 'Save Changelog to PDF') %></td>
+    <td colspan="6"></td>
   </tr>
 </table>
 <% end %>

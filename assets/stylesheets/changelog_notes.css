@@ -48,6 +48,17 @@ table.changelog {
     white-space: nowrap;
     table-layout: fixed;
     border-collapse: collapse;
+    border: 1px solid #e4e4e4;
+}
+
+table.changelog tr, th {
+    border-color: #808080;
+    background-color: white;
+}
+
+table.changelog th.changelog_header {
+    background-color: #e4e4e4;
+    color: #169;
 }
 
 table.changelog th.checkbox, td.checkbox {
@@ -56,19 +67,19 @@ table.changelog th.checkbox, td.checkbox {
 }
 
 table.changelog th.tracker, td.tracker {
-    text-align: center;
+    text-align: left;
     overflow: hidden;
 }
 
 table.changelog th.issue, td.issue {
-    text-align: center;
+    text-align: left;
     overflow: hidden;
 }
 
 table.changelog input[name^="issue_id"] {
     width: 100%;
     font-size: 100%;
-    text-align: center;
+    text-align: left;
     color: #0088cc;
     background-color: white;
     border: hidden;
@@ -83,7 +94,7 @@ table.changelog input[name^="issue_id"]:focus {
 }
 
 table.changelog th.status, td.status {
-    text-align: center;
+    text-align: left;
     overflow: hidden;
 }
 
@@ -103,7 +114,7 @@ table.changelog textarea[name^="issues_changelog_notes_descriptions"] {
 }
 
 table.changelog td.save_changes {
-    text-align: center;
+    text-align: left;
     padding-right: 10px;
 }
 
