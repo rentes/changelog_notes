@@ -1,4 +1,5 @@
-# The Changelog Notes Controller Issue Helper
+# The Controller Helper that deals with bringing issue details
+# from the database into the input form
 module ChangelogNotesControllerIssueHelper
   # returns the Redmine project ID
   def project_id
@@ -25,10 +26,6 @@ module ChangelogNotesControllerIssueHelper
     @issues_status = []
     @issues_changelog_notes_descriptions = []
     initialize_issues_array unless @version_selected_combo.nil?
-  end
-
-  # generate a PDF with the selected changelog notes
-  def generate_changelog_notes_pdf
   end
 
   # populates the issues array with information from the Redmine database

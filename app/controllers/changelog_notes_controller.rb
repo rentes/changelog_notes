@@ -1,8 +1,9 @@
-# The Changelog Notes Controller
+# The Changelog Notes Main Controller
 class ChangelogNotesController < ApplicationController
   unloadable
   include ChangelogNotesControllerIssueHelper
   include ChangelogNotesControllerPDFHelper
+  include ChangelogNotesControllerSaveHelper
 
   def index
     version_from_combobox
@@ -17,5 +18,6 @@ class ChangelogNotesController < ApplicationController
   end
 
   def save
+    save_changes if params[:commit] == 'Save changes'
   end
 end

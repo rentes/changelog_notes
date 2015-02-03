@@ -107,13 +107,13 @@ table.changelog td.save_changes {
     padding-right: 10px;
 }
 
-table.generate_changelog_notes {
+table.save_changelog_notes {
     width: 100%;
     white-space: nowrap;
     table-layout: fixed;
     border-collapse: collapse;
 }
 
-table.generate_changelog_notes td.generate_changelog_notes {
+table.save_changelog_notes td.save_changes, td.save_pdf {
     text-align: left;
 }

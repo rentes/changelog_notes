@@ -21,19 +21,22 @@
   <col width="8%" />
   <col width="9%" />
   <col width="70%" />
+  <thead>
   <tr>
     <th class="checkbox">
-      <%= check_box('check_uncheck_all', 'value',
-                    {:onclick => 'check_uncheck_all(this);',
-                     :title => 'Include/exclude all the changelog notes'},
-                    'yes', 'no') %>
+      <%= check_box('check_uncheck_all', 'value', {:onclick => 'check_uncheck_all(this);', :title => 'Include/exclude all the changelog notes'}, 'yes', 'no') %>
     </th>
-    <th class="tracker">Tracker</th>
-    <th class="issue">Issue ID</th>
-    <th class="status">Status</th>
-    <th class="description">Changelog Note Description</th>
+    <th title="Sort by Tracker" class="tracker">
+      <a href="/redmine/public/changelog_notes?project_id=<%=params[:project_id]%>&id=<%=@version_selected_combo%>&sort=tracker%2Cid%3Adesc">Tracker</a>
+    </th>
+    <th title="Sort by Issue ID" class="issue">
+      <a href="/redmine/public/changelog_notes?project_id=<%=params[:project_id]%>&id=<%=@version_selected_combo%>&sort=id" class="sort desc">Issue ID</a>
+    </th>
+    <th title="Status" class="status">Status</th>
+    <th title="Changelog Description" class="description">Changelog Note Description</th>
   </tr>
-  <% @issues.each_with_index do |issue, index| %>
+  </thead>
+    <% @issues.each_with_index do |issue, index| %>
       <tr>
         <td class="checkbox">
           <%= check_box('issues_check_box', issue.to_s.split(' ').at(1)[1..-2],
@@ -54,20 +57,14 @@
                                                :title => @issues_changelog_notes_descriptions[index]} %>
         </td>
       </tr>
-      <tr><td colspan="5"></td></tr>
-      <tr>
-        <td class="save_changes"><%= submit_tag('Save changes', :title => 'Saves all changes made on the changelog notes') %></td>
-        <td colspan="4"></td>
-      </tr>
 </table>
 <br>
-<table class="generate_changelog_notes">
-  <td class="generate_changelog_notes">
-    <%= submit_tag(nil, name: 'pdf', class: 'changelog_notes', value: 'Generate Changelog PDF', title: 'Generate Changelog PDF') %>
-  </td>
+<table class="save_changelog_notes">
+  <tr>
+    <td class="save_changes"><%= submit_tag('Save changes', :title => 'Saves all changes made on the changelog notes') %></td>
+    <td class="save_pdf"><%= submit_tag(nil, name: 'pdf', class: 'changelog_notes', value: 'Save to PDF', title: 'Save Changelog to PDF') %></td>
+  </tr>
 </table>
 <% end %>
-<% else %>
-<b><i>No issues exist for the selected version.</i></b>
 <% end %>
 <% end %>
