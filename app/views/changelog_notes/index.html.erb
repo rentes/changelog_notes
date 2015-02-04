@@ -37,8 +37,7 @@
       <tr>
         <td class="checkbox">
           <%= check_box('issues_check_box', issue.to_s.split(' ').at(1)[1..-2],
-                        {:checked => @issues_have_changelog_notes[index],
-                         :title => 'Include/exclude the changelog note from the issue'}, '1', '0') %>
+                        {:checked => '0', :title => 'Include/exclude the changelog note from the issue'}, '1', '0') %>
         </td>
         <td class="tracker"><%= issue.to_s.split(' ').at(0) %></td>
         <td class="issue">
