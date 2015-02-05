@@ -11,7 +11,7 @@
     </td>
   </tr>
 </table>
-<%= form_tag("/redmine/changelog_notes?project_id=#{params[:project_id]}&id=#{@version_selected_combo}", method: :post, remote: true) do %>
+<%= form_tag('changelog_notes', method: :put, remote: :true) do %>
 <% if @issues.length > 0 %>
 <br>
 <h3>Changelog</h3>
@@ -53,6 +53,7 @@
                                                :title => @issues_changelog_notes_descriptions[index]} %>
         </td>
       </tr>
+      <% end %>
 </table>
 <br>
 <table class="save_changelog_notes">
@@ -62,6 +63,5 @@
     <td colspan="6"></td>
   </tr>
 </table>
-<% end %>
 <% end %>
 <% end %>
