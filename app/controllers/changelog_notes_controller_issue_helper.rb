@@ -69,8 +69,6 @@ module ChangelogNotesControllerIssueHelper
 
   # inserting data into the changelog note description array
   def populate_changelog_notes_description(issue)
-    @issues_changelog_notes_descriptions.push('') \
-    if issue.custom_values.length == 0
     issue.custom_values.each do |custom_value|
       if custom_value.customized_id == issue.id && \
          custom_value.custom_field_id == changelog_notes_id

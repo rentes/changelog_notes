@@ -18,7 +18,9 @@ module ChangelogNotesControllerPDFHelper
 
   # from each issue listed on the form, if it is checked then
   # the note will be added to the PDF
-  def filter_changelog_notes_checked(issues_list, changelog_note, issues_checked)
+  def filter_changelog_notes_checked(issues_list,
+                                     changelog_note,
+                                     issues_checked)
     issues_list.each do |issue|
       if issues_checked[issue] == '1'
         add_changelog_note_to_pdf(issue, changelog_note[issue])
