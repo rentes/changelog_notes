@@ -25,7 +25,7 @@ module ChangelogNotesControllerSaveHelper
     # updating the custom value 'Changelog Note'
     issue_to_update.custom_values.each do |custom_value|
       if custom_value.custom_field_id == changelog_notes_id && \
-         !custom_value.value.nil? && custom_value.value != changelog_note
+         custom_value.value != changelog_note
         custom_value.value = changelog_note
       end
     end

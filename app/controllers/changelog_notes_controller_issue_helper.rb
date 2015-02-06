@@ -4,7 +4,7 @@ module ChangelogNotesControllerIssueHelper
   # returns the Redmine project ID
   def project_id
     project_id_sql = "identifier = \"" + params[:project_id].to_s + "\""
-    @project = Project.all(conditions: [project_id_sql]).at(0)
+    @@project = Project.all(conditions: [project_id_sql]).at(0)
   end
 
   # returns the version chosen from the plugin page combo-box
@@ -16,7 +16,7 @@ module ChangelogNotesControllerIssueHelper
     end
     @natural_sorted_versions = \
     Naturalsorter::Sorter.sort_version(@sorted_versions, false)
-    @version_selected_combo = params[:id].to_s
+    @@version_selected_combo = params[:id].to_s
   end
 
   # obtains all the necessary information from the Redmine database
@@ -25,7 +25,7 @@ module ChangelogNotesControllerIssueHelper
     @issues_have_changelog_notes = []
     @issues_status = []
     @issues_changelog_notes_descriptions = []
-    initialize_issues_array unless @version_selected_combo.nil?
+    initialize_issues_array unless @@version_selected_combo.nil?
   end
 
   # populates the issues array with information from the Redmine database
@@ -36,12 +36,12 @@ module ChangelogNotesControllerIssueHelper
 
   # finding out all the issues of the project and version selected
   def find_all_issues
-    version_id_sql = "project_id =\"#{@project.id}\" " + \
-                     "AND name = \"#{@version_selected_combo}\""
+    version_id_sql = "project_id =\"#{@@project.id}\" " + \
+                     "AND name = \"#{@@version_selected_combo}\""
     # obtaining the unique ID from the chosen project version
     version = Version.all(conditions: [version_id_sql]).at(0).id.to_s \
       if Version.all(conditions: [version_id_sql]) != []
-    issues_sql = "project_id = \"#{@project.id}\" " + \
+    issues_sql = "project_id = \"#{@@project.id}\" " + \
                  "AND fixed_version_id = \"#{version}\""
     populate_issues_array(issues_sql)
   end
@@ -74,7 +74,11 @@ module ChangelogNotesControllerIssueHelper
     issue.custom_values.each do |custom_value|
       if custom_value.customized_id == issue.id && \
          custom_value.custom_field_id == changelog_notes_id
-        @issues_changelog_notes_descriptions.push(custom_value.value)
+        if !custom_value.value.nil?
+          @issues_changelog_notes_descriptions.push(custom_value.value)
+        else
+          @issues_changelog_notes_descriptions.push('')
+        end
       end
     end
   end

@@ -5,7 +5,7 @@
 <h3>Product and Version</h3>
 <table class="product_version">
   <tr>
-    <td class="product">Product: <%= text_field_tag 'product', @project, readonly: 'readonly' %></td>
+    <td class="product">Product: <%= text_field_tag 'product', params[:project_id], readonly: 'readonly' %></td>
     <td class="version">Version:
       <%= select_tag(:version_id, options_for_select(@natural_sorted_versions, params[:id]), :include_blank => true, :onchange => 'redirectVersion()') %>
     </td>
@@ -45,7 +45,7 @@
           <%= text_field_tag('issue_id[]', issue.to_s.split(' ').at(1)[1..-2], type: 'url', readonly: 'readonly') %>
           </a>
         </td>
-        <td class="status"><%= @issues_status[index]  %></td>
+        <td class="status"><%= @issues_status[index].name  %></td>
         <td class="description"><%= text_area 'issues_changelog_notes_descriptions',
                                               issue.to_s.split(' ').at(1)[1..-2],
                                               {:value => @issues_changelog_notes_descriptions[index],

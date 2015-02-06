@@ -9,15 +9,10 @@ class ChangelogNotesController < ApplicationController
     version_from_combobox
     project_id
     initialize_page_information
-    respond_to do |format|
-      format.html
-      format.pdf do
-        generate_changelog_notes_pdf
-      end
-    end
   end
 
   def save
     save_changes if params[:commit] == 'Save changes'
+    generate_changelog_notes_pdf if params[:commit] == 'Save to PDF'
   end
 end
