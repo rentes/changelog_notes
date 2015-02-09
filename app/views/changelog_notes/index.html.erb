@@ -5,7 +5,7 @@
 <h3>Product and Version</h3>
 <table class="product_version">
   <tr>
-    <td class="product">Product: <%= text_field_tag 'product', params[:project_id], readonly: 'readonly' %></td>
+    <td class="product">Product: <%= text_field_tag 'product', @project, readonly: 'readonly' %></td>
     <td class="version">Version:
       <%= select_tag(:version_id, options_for_select(@natural_sorted_versions, params[:id]), :include_blank => true, :onchange => 'redirectVersion()') %>
     </td>
@@ -60,7 +60,9 @@
   <tr>
     <td class="save_changes"><%= submit_tag('Save changes', :title => 'Saves all changes made on the changelog notes') %></td>
     <td class="save_pdf"><%= submit_tag('Save to PDF', :title => 'Save Changelog to PDF') %></td>
-    <td colspan="6"></td>
+    <td><%= hidden_field_tag 'product', @project, readonly: 'readonly' %></td>
+    <td><%= hidden_field_tag 'version', @version, readonly: 'readonly' %></td>
+    <td colspan="4"></td>
   </tr>
 </table>
 <% end %>
