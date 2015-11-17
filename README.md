@@ -14,7 +14,14 @@ Please read the official documentation on how to install [Redmine plugins](http:
 TL;DR:
 
 - unzip the plugin sources into redmine/plugins directory;
-- run rake redmine:plugins:migrate RAILS_ENV=production (this step will insert a custom field "Changelog Note" on the redmine custom_fields table);
+- run
+
+```
+rake redmine:plugins:migrate RAILS_ENV=production
+```
+
+This step will insert a custom field "Changelog Note" on the redmine custom_fields table.
+
 - enable the Changelog Notes module and custom field on your project of choice under its Settings page:
   - check under the Information and Modules tabs after choosing the project Settings.
 - check the projects where Changelog Notes custom field is being used on the administration custom fields page;
@@ -23,8 +30,17 @@ TL;DR:
 Uninstalling
 ============
 
-- run rake redmine:plugins:migrate NAME=changelog_notes VERSION=0 RAILS_ENV=production;
-- remove the directory redmine/plugins/changelog_notes.
+- run
+
+```
+rake redmine:plugins:migrate NAME=changelog_notes VERSION=0 RAILS_ENV=production
+```
+
+- remove the directory changelog_notes:
+
+```
+rm -r plugins/changelog_notes
+```
 
 Inspiration
 ===========
